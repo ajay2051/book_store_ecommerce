@@ -1,0 +1,31 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="h1 fw-bold">Search, Read, Buy, Review</h1>
+          <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Accusamus atque autem blanditiis commodi consequatur debitis eaque eligendi,
+              ex fugit hic in ipsa nesciunt porro quaerat ratione similique soluta temporibus unde voluptas voluptatum?
+              Animi deserunt dicta distinctio fugiat qui sequi sit!
+              Cupiditate dignissimos fugit harum inventore ipsam maxime optio quos repudiandae!</p>
+          <p>
+              <a class="btn btn-primary my-2" href="#">Make Account</a>
+          </p>
+      </div>
+  </div>
+</section>
+<section>
+    {% for product in products %}
+    <div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><a href="{% url 'product_detail' product.id %}">{{ product.title }}</a></h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+    {% endfor %}
+</section>
+{% endblock content %}

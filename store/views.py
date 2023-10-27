@@ -4,14 +4,9 @@ from .models import Category, Product
 
 # Create your views here.
 
-def categories(request):
-    return {
-        "categories": Category.objects.all()
-    }
 
-
-def all_products(request):
-    products = Product.objects.all()
+def product_all(request):
+    products = Product.products.filter(is_active=True)
     context = {'products': products}
     return render(request, 'store/home.html', context=context)
 
@@ -21,7 +16,7 @@ def product_detail(request, id):
     context = {
         'product': product
     }
-    return render(request, 'store/products/detail.html', context=context)
+    return render(request, 'store/products/single_product.html', context=context)
 
 
 def category_list(request, id):
